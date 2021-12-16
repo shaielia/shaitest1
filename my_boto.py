@@ -16,16 +16,19 @@ def get_instance_ids(client):
 ec2 = boto3.resource('ec2')
 
 def create_instance(ec2):
-    response = ec2.create_instances(SubnetId="subnet-018523f5b12a8b3fb", InstanceType="t2.micro", ImageId="ami-0947d2ba12ee1ff75", MaxCount=1, MinCount=1)
+    response = ec2.create_instances(InstanceType="t2.micro", ImageId="ami-0947d2ba12ee1ff75", MaxCount=1, MinCount=1)
     return response
 
 def stop_my_instance(client, instance_to_stop):
     response = client.stop_instances(InstanceIds=[instance_to_stop])
     return response
 
-# create_instance(ec2)
-print(get_instance_ids(client))
-# stop_my_instance(client, "i-0e498ecccade1943e")
+create_instance(ec2)
+# print(get_instance_ids(client))
+#instance = get_instance_ids(client)
+#stop_my_instance(client, instances[0]["id"])
+
+stop_my_instance(client, "i-04d31bcde588c9706")
 
 def set_eip_by_instance_id(client, instance_id):
     allocation = client.allocate_address()
