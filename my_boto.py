@@ -1,3 +1,5 @@
+import boto3
+
 client = boto3.client("ec2")
 
 
@@ -22,7 +24,7 @@ def stop_my_instance(client, instance_to_stop):
     return response
 
 # create_instance(ec2)
-# print(get_instance_ids(client))
+print(get_instance_ids(client))
 # stop_my_instance(client, "i-0e498ecccade1943e")
 
 def set_eip_by_instance_id(client, instance_id):
